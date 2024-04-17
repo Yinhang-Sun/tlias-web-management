@@ -6,14 +6,14 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- * 部门实体类
+ * Department entity class
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Dept {
-    private Integer id; //ID
-    private String name; //部门名称
-    private LocalDateTime createTime; //创建时间
-    private LocalDateTime updateTime; //修改时间
+    private Integer id;
+    private String name;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 }
