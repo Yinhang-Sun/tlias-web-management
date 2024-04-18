@@ -4,7 +4,6 @@ import com.jonathan.pojo.Dept;
 import com.jonathan.pojo.Result;
 import com.jonathan.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
