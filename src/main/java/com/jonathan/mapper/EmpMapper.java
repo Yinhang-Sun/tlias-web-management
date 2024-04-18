@@ -1,6 +1,7 @@
 package com.jonathan.mapper;
 
 import com.jonathan.pojo.Emp;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -32,4 +33,18 @@ public interface EmpMapper {
      */
     //@Select("select * from emp")
     public List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
+
+    /**
+     * Batch delete employees
+     * @param ids
+     */
+    void delete(List<Integer> ids);
+
+    /**
+     * Add new employees
+     * @param emp
+     */
+    @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
+            "values(#{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate}, #{deptId}, #{createTime}, #{updateTime})")
+    void insert(Emp emp);
 }

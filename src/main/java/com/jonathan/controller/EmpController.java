@@ -1,16 +1,16 @@
 package com.jonathan.controller;
 
+import com.jonathan.pojo.Emp;
 import com.jonathan.pojo.PageBean;
 import com.jonathan.pojo.Result;
 import com.jonathan.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 /**
@@ -18,12 +18,13 @@ import java.time.LocalDate;
  */
 @Slf4j
 @RestController
+@RequestMapping("/emps")
 public class EmpController {
 
     @Autowired
     private EmpService empService;
 
-    @GetMapping("/emps")
+    @GetMapping
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer pageSize,
                        String name, Short gender,
@@ -35,4 +36,20 @@ public class EmpController {
         return Result.success(pageBean);
 
     }
+
+    @DeleteMapping("/{ids}")
+    public Result delete(@PathVariable List<Integer> ids) {
+        log.info("Batch delete employees, ids: {}", ids);
+        empService.delete(ids);
+        return Result.success();
+    }
+
+    @PostMapping
+    public Result save(@RequestBody Emp emp) {
+        log.info("Add new employees: {}", emp);
+        empService.save(emp);
+        return Result.success();
+    }
+
+
 }
