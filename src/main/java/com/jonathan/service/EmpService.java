@@ -43,4 +43,11 @@ public interface EmpService {
      * @param emp
      */
     void update(Emp emp);
+
+    /**
+     * employee login
+     * @param emp
+     * @return
+     */
+    Emp login(Emp emp);
 }
