@@ -1,0 +1,26 @@
+spring:
+  #Database connection info
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlias
+    username: root
+    password:
+  #File upload configuration
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+#Mybatis configuration
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+#Alibaba Cloud OSS
+aliyun:
+  oss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    accessKeyId: LTAI4GCH1vX6DKqJWxd6nEuW
+    accessKeySecret: yBshYweHOpqDuhCArrVHwIiBKpyqSL
+    bucketName: web-tlias
