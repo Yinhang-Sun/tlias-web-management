@@ -19,7 +19,7 @@ public interface DeptService {
      * Delete department
      * @param id
      */
-    void delete(Integer id);
+    void delete(Integer id) throws Exception;
 
     /**
      * add department

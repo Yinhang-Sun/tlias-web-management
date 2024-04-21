@@ -1,6 +1,7 @@
 package com.jonathan.mapper;
 
 import com.jonathan.pojo.Emp;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -69,4 +70,7 @@ public interface EmpMapper {
      */
     @Select("select * from emp where username = #{username} and password = #{password}")
     Emp getByUsernameAndPassword(Emp emp);
+
+    @Delete("delete from emp where dept_id = #{deptId}")
+    void deleteByDeptId(Integer deptId);
 }
