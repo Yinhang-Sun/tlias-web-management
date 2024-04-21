@@ -1,25 +1,21 @@
-package com.jonathan.filter;
+package com.jonathan.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jonathan.pojo.Result;
 import com.jonathan.utils.JwtUtils;
-import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-
-import java.io.IOException;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
-//@WebFilter(urlPatterns = "/*")
-public class LoginCheckFilter implements Filter {
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse resp = (HttpServletResponse) response;
-
+@Component
+public class LoginCheckInterceptor implements HandlerInterceptor {
+    @Override//Run before the target resource method is run, return true: release, return false, do not release
+    public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
         //1. get request url
         String url = req.getRequestURL().toString();
         log.info("Requested url: {}",url);
@@ -28,8 +24,7 @@ public class LoginCheckFilter implements Filter {
         // If it does, it means that it is a login operation and is allowed.
         if(url.contains("login")){
             log.info("Login operation, release...");
-            chain.doFilter(request,response);
-            return;
+            return true;
         }
 
         //3.Get the token in the request header.
@@ -43,7 +38,7 @@ public class LoginCheckFilter implements Filter {
             //Manual conversion object --json --------> Alibaba fastJSON
             String notLogin = JSONObject.toJSONString(error);
             resp.getWriter().write(notLogin);
-            return;
+            return false;
         }
 
         //5.Parse the token. If the parsing fails, an error result will be returned (not logged in).
@@ -56,12 +51,22 @@ public class LoginCheckFilter implements Filter {
             //Manual conversion object --json --------> Alibaba fastJSON
             String notLogin = JSONObject.toJSONString(error);
             resp.getWriter().write(notLogin);
-            return;
+            return false;
         }
 
         //6.Release
         log.info("The token is legal and released");
-        chain.doFilter(request, response);
+        return true;
 
+    }
+
+    @Override//Run after target resource method runs
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        System.out.println("postHandle ...");
+    }
+
+    @Override//Run after the view is rendered, and finally run
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        System.out.println("afterCompletion ...");
     }
 }
