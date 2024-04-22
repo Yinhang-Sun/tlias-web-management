@@ -7,11 +7,12 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 @Component
-@Aspect //The current class is an aspect class
+//@Aspect //The current class is an aspect class
 @Slf4j
 public class TimeAspect {
 
-    @Around("execution(* com.jonathan.service.*.*(..))")
+    //@Around("execution(* com.jonathan.service.*.*(..))")
+    @Around("com.jonathan.aop.MyAspect1.pointCut()")
     public Object recordTime(ProceedingJoinPoint joinPoint) throws Throwable {
         //Record method execution start time
         long begin = System.currentTimeMillis();
