@@ -27,7 +27,8 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public List<Dept> list() {
-        return deptMapper.list();
+        List<Dept> deptList = deptMapper.list();
+        return deptList;
     }
 
     @Transactional(rollbackFor = Exception.class)//rollback for all exceptions
