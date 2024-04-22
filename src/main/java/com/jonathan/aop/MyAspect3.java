@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Aspect
+//@Aspect
 public class MyAspect3 {
 
     @Before("execution(* com.jonathan.service.impl.DeptServiceImpl.*(..))")

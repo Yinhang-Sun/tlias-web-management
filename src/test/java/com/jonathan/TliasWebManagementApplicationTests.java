@@ -1,18 +1,21 @@
 package com.jonathan;
 
+import com.jonathan.pojo.Dept;
+import com.jonathan.service.DeptService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @SpringBootTest
 class TliasWebManagementApplicationTests {
+
+    @Autowired
+    private DeptService deptService;
 
     @Test
     public void testUuid() {
@@ -50,5 +53,18 @@ class TliasWebManagementApplicationTests {
         System.out.println(claims);
 
     }
+
+    @Test
+    public void testAopList(){
+        List<Dept> list = deptService.list();
+        System.out.println(list);
+    }
+
+    @Test
+    public void testAopGetById(){
+        Dept dept = deptService.listById(1);
+        System.out.println(dept);
+    }
+
 
 }

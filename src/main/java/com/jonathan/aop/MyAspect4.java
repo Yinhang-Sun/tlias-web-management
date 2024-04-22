@@ -1,4 +1,4 @@
-package com.jonathan;
+package com.jonathan.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.After;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@Aspect
+//@Aspect
 public class MyAspect4 {
 
     @Before("execution(* com.jonathan.service.impl.DeptServiceImpl.*(..))")
