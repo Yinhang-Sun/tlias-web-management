@@ -1,5 +1,6 @@
 package com.jonathan.controller;
 
+import com.jonathan.anno.Log;
 import com.jonathan.pojo.Emp;
 import com.jonathan.pojo.PageBean;
 import com.jonathan.pojo.Result;
@@ -24,6 +25,7 @@ public class EmpController {
     @Autowired
     private EmpService empService;
 
+    @Log
     @GetMapping
     public Result page(@RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer pageSize,
@@ -37,6 +39,7 @@ public class EmpController {
 
     }
 
+    @Log
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable List<Integer> ids) {
         log.info("Batch delete employees, ids: {}", ids);
@@ -44,6 +47,7 @@ public class EmpController {
         return Result.success();
     }
 
+    @Log
     @PostMapping
     public Result save(@RequestBody Emp emp) {
         log.info("Add new employees: {}", emp);
@@ -51,6 +55,7 @@ public class EmpController {
         return Result.success();
     }
 
+    @Log
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         log.info("Get employee by id: {}", id);
@@ -58,6 +63,7 @@ public class EmpController {
         return Result.success(emp);
     }
 
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp) {
         log.info("Update employees: {}", emp);

@@ -1,5 +1,6 @@
 package com.jonathan.controller;
 
+import com.jonathan.anno.Log;
 import com.jonathan.pojo.Dept;
 import com.jonathan.pojo.Result;
 import com.jonathan.service.DeptService;
@@ -25,6 +26,7 @@ public class DeptController {
      * list all department
      * @return
      */
+    @Log
     @GetMapping
     public Result list() {
         log.info("List all department data");
@@ -40,6 +42,7 @@ public class DeptController {
      * @param id
      * @return
      */
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) throws Exception {
         log.info("Delete department with id {}", id);
@@ -52,6 +55,7 @@ public class DeptController {
      * add department
      * @return
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("Add department: {}", dept);
@@ -65,6 +69,7 @@ public class DeptController {
      * @param id
      * @return
      */
+    @Log
     @GetMapping("/{id}")
     public Result listById(@PathVariable Integer id) {
         log.info("List department with id {}", id);
@@ -78,6 +83,7 @@ public class DeptController {
      * @param dept
      * @return
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Dept dept) {
         log.info("Update department {}", dept);

@@ -37,7 +37,6 @@ public class DeptServiceImpl implements DeptService {
         try {
             deptMapper.deleteById(id);//delete department based on id
 
-            int i = 1 / 0;//Runtime exception
 //        if (true) {
 //            throw new Exception("Something wrong!");//not runtime exception
 //        }
