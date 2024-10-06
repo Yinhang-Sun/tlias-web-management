@@ -1,5 +1,6 @@
 package com.jonathan;
 
+import com.jonathan.controller.DeptController;
 import com.jonathan.pojo.Dept;
 import com.jonathan.service.DeptService;
 import io.jsonwebtoken.Claims;
@@ -8,11 +9,15 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import java.util.*;
 
 @SpringBootTest
 class TliasWebManagementApplicationTests {
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @Autowired
     private DeptService deptService;
@@ -64,6 +69,14 @@ class TliasWebManagementApplicationTests {
     public void testAopGetById(){
         Dept dept = deptService.listById(1);
         System.out.println(dept);
+    }
+
+    @Test
+    public void testScope() {
+        for (int i = 0; i < 10; i++) {
+            DeptController deptController = applicationContext.getBean(DeptController.class);
+            System.out.println(deptController);
+        }
     }
 
 

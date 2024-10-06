@@ -10,10 +10,17 @@
         <module name="tlias-web-management" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="21" />
+    <bytecodeTargetLevel target="21">
+      <module name="aliyun-oss-spring-boot-autoconfiguration" target="21" />
+      <module name="aliyun-oss-spring-boot-starter" target="21" />
+      <module name="springboot-web-config" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="aliyun-oss-spring-boot-autoconfiguration" options="-parameters" />
+      <module name="aliyun-oss-spring-boot-starter" options="-parameters" />
+      <module name="springboot-web-config" options="-parameters" />
       <module name="tlias-web-management" options="-parameters" />
     </option>
   </component>

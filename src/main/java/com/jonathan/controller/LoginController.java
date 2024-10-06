@@ -36,7 +36,7 @@ public class LoginController {
             return Result.success(jwt);
         }
 
-        //Login failed, return error
+        //Login failed, return error test
         return Result.error("username or password incorrect");
     }
 }
