@@ -46,7 +46,7 @@ public class DeptController {
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) throws Exception {
         log.info("Delete department with id {}", id);
-        //call service to delete department
+        //Call service to delete department
         deptService.delete(id);
         return Result.success();
     }
@@ -59,7 +59,7 @@ public class DeptController {
     @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("Add department: {}", dept);
-        //call service to add department
+        //Call service to add department
         deptService.add(dept);
         return Result.success();
     }
@@ -73,7 +73,7 @@ public class DeptController {
     @GetMapping("/{id}")
     public Result listById(@PathVariable Integer id) {
         log.info("List department with id {}", id);
-        //call service to list department by id
+        //Call service to list department by id
         Dept dept = deptService.listById(id);
         return Result.success(dept);
     }
@@ -87,7 +87,7 @@ public class DeptController {
     @PutMapping
     public Result update(@RequestBody Dept dept) {
         log.info("Update department {}", dept);
-        //call service to update department
+        //Call service to update department
         deptService.update(dept);
         return Result.success();
     }
