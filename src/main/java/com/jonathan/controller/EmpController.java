@@ -32,7 +32,7 @@ public class EmpController {
                        String name, Short gender,
                        @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
                        @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
-        log.info("pagination query, parameters: {}, {}, {}, {}, {}, {}", page, pageSize, name, gender, begin, end);
+        log.info("Pagination query, parameters: {}, {}, {}, {}, {}, {}", page, pageSize, name, gender, begin, end);
 
         PageBean pageBean = empService.page(page, pageSize, name, gender, begin, end);
         return Result.success(pageBean);
