@@ -37,6 +37,6 @@ public class LoginController {
         }
 
         //Login failed, return error
-        return Result.error("username or password incorrect");
+        return Result.error("username or password incorrect...");
     }
 }
